@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>কাজবন্ধু | অনলাইন কাজ</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f7f5;color:#17372c}
+header{background:#087f5b;color:white;padding:22px 16px;text-align:center}
+header h1{margin:0 0 8px}
+nav{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:16px}
+nav a{color:white;text-decoration:none;font-weight:bold}
+main{max-width:760px;margin:auto;padding:18px}
+.welcome,.card{background:white;border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 2px 10px #0000000c}
+h2{margin-top:0}
+.packages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.price{font-size:27px;font-weight:bold;color:#087f5b;margin:12px 0}
+button{border:0;border-radius:8px;background:#087f5b;color:white;padding:12px;width:100%;font-size:16px;cursor:pointer}
+.secondary{background:#e5f4ee;color:#087f5b}
+.note{font-size:13px;color:#66776f;line-height:1.6}
+footer{text-align:center;padding:24px;color:#66776f}
+@media(max-width:420px){.packages{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>কাজবন্ধু</h1>
+  <div>বাস্তব কাজ করুন, কাজের পারিশ্রমিক পান</div>
+  <nav>
+    <a href="#packages">প্যাকেজ</a>
+    <a href="#deposit">ডিপোজিট</a>
+    <a href="#withdraw">উত্তোলন</a>
+  </nav>
+</header>
+
+<main>
+  <section class="welcome">
+    <h2>স্বাগতম!</h2>
+    <p>বাস্তব কাজের সুযোগ দেখুন এবং কাজের প্রমাণ জমা দিন।</p>
+    <p><b>ব্যালেন্স:</b> <span id="balance">লগইনের পর দেখা যাবে</span></p>
+    <p class="note">রেজিস্ট্রেশন ও ব্যালেন্সের বাস্তব হিসাব চালু করতে নিরাপদ সার্ভার সংযোগ প্রয়োজন।</p>
+  </section>
+
+  <section id="packages" class="card">
+    <h2>আমাদের ৪টি প্যাকেজ</h2>
+    <div class="packages">
+      <div class="card">
+        <h3>প্যাকেজ ১</h3>
+        <div class="price">৳৫০০</div>
+        <p>প্রতিদিন সর্বোচ্চ ২টি কাজের সুযোগ</p>
+        <button onclick="choosePackage(500)">প্যাকেজ নির্বাচন</button>
+      </div>
+      <div class="card">
+        <h3>প্যাকেজ ২</h3>
+        <div class="price">৳১,০০০</div>
+        <p>প্রতিদিন সর্বোচ্চ ২টি কাজের সুযোগ</p>
+        <button onclick="choosePackage(1000)">প্যাকেজ নির্বাচন</button>
+      </div>
+      <div class="card">
+        <h3>প্যাকেজ ৩</h3>
+        <div class="price">৳১,৫০০</div>
+        <p>প্রতিদিন সর্বোচ্চ ৩টি কাজের সুযোগ</p>
+        <button onclick="choosePackage(1500)">প্যাকেজ নির্বাচন</button>
+      </div>
+      <div class="card">
+        <h3>প্যাকেজ ৪</h3>
+        <div class="price">৳২,০০০</div>
+        <p>প্রতিদিন সর্বোচ্চ ৪টি কাজের সুযোগ</p>
+        <button onclick="choosePackage(2000)">প্যাকেজ নির্বাচন</button>
+      </div>
+    </div>
+    <p id="packageMsg" class="note"></p>
+  </section>
+
+  <section id="deposit" class="card">
+    <h2>টাকা ডিপোজিট</h2>
+    <p>পেমেন্ট যাচাইয়ের পর অ্যাকাউন্টে টাকা যোগ হবে।</p>
+    <button onclick="showNotice()">ডিপোজিট অনুরোধ</button>
+  </section>
+
+  <section id="withdraw" class="card">
+    <h2>টাকা উত্তোলন</h2>
+    <p>অনুমোদিত ব্যালেন্স থেকে উত্তোলনের অনুরোধ করা যাবে।</p>
+    <button class="secondary" onclick="showNotice()">উত্তোলনের অনুরোধ</button>
+  </section>
+
+  <section class="card">
+    <h2>কাজের নিয়ম</h2>
+    <p>কাজ সম্পন্ন করে প্রমাণ জমা দিতে হবে। যাচাইয়ের পর প্রকৃত কাজের মূল্য অনুযায়ী পারিশ্রমিক দেওয়া হবে।</p>
+    <p class="note">এই পেজটি এখন প্রাথমিক ডিজাইন। কোনো বাস্তব ডিপোজিট, প্যাকেজ কেনা বা উত্তোলন এখনো সম্পন্ন হয় না।</p>
+  </section>
+</main>
+
+<footer>কাজবন্ধু © ২০২৬</footer>
+
+<script>
+function choosePackage(amount){
+  document.getElementById('packageMsg').textContent =
+    'আপনি ৳' + amount.toLocaleString('bn-BD') +
+    ' প্যাকেজ নির্বাচন করেছেন। বাস্তব কেনাকাটার আগে লগইন ও ব্যালেন্স যাচাই চালু করতে হবে।';
+}
+function showNotice(){
+  alert('বাস্তব ডিপোজিট ও উত্তোলন চালু করতে পরবর্তী ধাপে নিরাপদ অ্যাকাউন্ট সংযোগ করা হবে।');
+}
+</script>
+</body>
+</html>
